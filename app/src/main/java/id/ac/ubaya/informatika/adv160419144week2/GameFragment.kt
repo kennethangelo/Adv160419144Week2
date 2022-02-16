@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_game.*
-import kotlinx.android.synthetic.main.fragment_main.*
 
 class GameFragment : Fragment() {
     override fun onCreateView(
@@ -32,7 +31,7 @@ class GameFragment : Fragment() {
 //        if(arguments != null){
         arguments?.let{
             val playerName = GameFragmentArgs.fromBundle(requireArguments()).playerName
-            txtTurn.text = "$playerName's Turn"
+            txtScore.text = "$playerName's Turn"
         }
 //        }
 
