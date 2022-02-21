@@ -29,14 +29,6 @@ class MainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        number1 = Random.nextInt(0,100)
-        number2 = Random.nextInt(0,100)
-        pos = Random.nextInt(0,4)
-        opera = operation[pos]
-        Log.d("numpos", opera)
-        Log.d("num1", number1.toString())
-        Log.d("num2", number2.toString())
-
         txtQuestion.text = number1.toString() + " " + opera + " " + number2.toString()
 
         super.onViewCreated(view, savedInstanceState)
