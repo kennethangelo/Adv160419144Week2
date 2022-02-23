@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     //lateinit -> Late Initialization
@@ -16,10 +18,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         //Below is used to initialize the Navigation Controller and associate it with NavHost Object
         navController = (supportFragmentManager.findFragmentById(R.id.hostFragment) as NavHostFragment).navController
-        NavigationUI.setupActionBarWithNavController(this, navController)
+        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
+        //Menghubungkan antara bottom nav dengan navcontroller
+        NavigationUI.setupWithNavController(navView, navController)
+        bottomNav.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return super.onSupportNavigateUp()
+        return NavigationUI.navigateUp(navController, drawerLayout)
+                //This code automatically detects if the user is on the top level of backstack: the drawer icon will show instead of the back button
+                || super.onNavigateUp()
     }
 }
